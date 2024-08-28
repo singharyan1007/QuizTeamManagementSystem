@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagement.Domain", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagament.Data", "TeamManagament.Data\TeamManagament.Data.csproj", "{7230D8AE-98B9-49E4-983D-A0D25E30FDF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagement.ServiceAPI", "TeamManagement.ServiceAPI\TeamManagement.ServiceAPI.csproj", "{EAEA7E1A-9EE0-4066-97E4-19AC4FF181BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{7230D8AE-98B9-49E4-983D-A0D25E30FDF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7230D8AE-98B9-49E4-983D-A0D25E30FDF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7230D8AE-98B9-49E4-983D-A0D25E30FDF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEA7E1A-9EE0-4066-97E4-19AC4FF181BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEA7E1A-9EE0-4066-97E4-19AC4FF181BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEA7E1A-9EE0-4066-97E4-19AC4FF181BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEA7E1A-9EE0-4066-97E4-19AC4FF181BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{26E9F103-E608-4620-8A30-EE906C4383AC} = {2608789C-50E5-41BF-8115-CA837158CAEA}
 		{B3420737-7702-43EE-8718-1CB5BFD99B25} = {7D8CCBA5-90ED-40E3-969D-600CE8E6735C}
 		{7230D8AE-98B9-49E4-983D-A0D25E30FDF1} = {A4235B3C-9A05-4534-8C32-8852AACF4304}
+		{EAEA7E1A-9EE0-4066-97E4-19AC4FF181BD} = {A33BE198-E9FC-4AE9-8F55-E10AB5A74CC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5BFE507-A71E-4800-9DAB-92AF52056DB5}

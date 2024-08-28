@@ -14,17 +14,17 @@ namespace TeamManagament.Data
     {
         TeamManageContext _context;
         public TeamRepository(TeamManageContext context) { _context = context; }
-        public async Task AddMember(int teamId, int memId)
+        public void AddMember(int teamId, int memId)
         {
             // Check if the team exists
-            var team = await _context.Teams.Include(t => t.Members).FirstOrDefaultAsync(t => t.TeamId == teamId);
+            var team =  _context.Teams.Include(t => t.Members).FirstOrDefault(t => t.TeamId == teamId);
             if (team == null)
             {
                 throw new ArgumentException($"Team with ID {teamId} not found.");
             }
 
             // Check if the member exists
-            var member = await _context.Members.FindAsync(memId);
+            var member =  _context.Members.Find(memId);
             if (member == null)
             {
                 throw new ArgumentException($"Member with ID {memId} not found.");
@@ -41,40 +41,49 @@ namespace TeamManagament.Data
             team.Members.Add(member);
 
             // Save changes to the database
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
         }
 
 
-        public async Task<List<TeamMember>> GetAllTeamMembers(int teamId)
+        public List<TeamMember> GetAllTeamMembers(int teamId)
         
             {
                 // Check if the team exists
-                var team = await _context.Teams
+                var team = _context.Teams
                     .Include(t => t.Members)
-                    .FirstOrDefaultAsync(t => t.TeamId == teamId);
+                    .FirstOrDefault(t => t.TeamId == teamId);
 
-                if (team == null)
+            var memers = from mem in _context.Members
+                where mem.TeamId == teamId
+                         select new TeamMember
+                         {
+                             MemberId = mem.MemberId,
+                             Name = mem.Name,
+                             TeamId = mem.TeamId
+                         };
+
+            if (team == null)
                 {
                     throw new ArgumentException($"Team with ID {teamId} not found.");
                 }
 
                 // Return the list of members (or an empty list if none)
-                return team.Members.Any() ? team.Members.ToList() : new List<TeamMember>();
+              return memers.ToList();
             
         }
 
-        public async Task RemoveMember(int teamId, int memId)
+        public void  RemoveMember(int teamId, int memId)
         {
             // Check if the team exists
-            var team = await _context.Teams.FindAsync(teamId);
+            var team = _context.Teams.Find(teamId);
             if (team == null)
             {
                 throw new ArgumentException($"Team with ID {teamId} not found.");
             }
 
             // Fetch the member to be removed
-            var member = await _context.Members
-                .FirstOrDefaultAsync(m => m.MemberId == memId && m.TeamId == teamId);
+            var member =  _context.Members
+                .FirstOrDefault(m => m.MemberId == memId && m.TeamId == teamId);
 
             if (member == null)
             {
@@ -85,7 +94,15 @@ namespace TeamManagament.Data
             _context.Members.Remove(member);
 
             // Save changes to the database
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
         }
+
+
+        public List<Team> GetAll()
+        {
+            return _context.Teams.ToList();
+        }
+
+
     }
 }

@@ -9,9 +9,10 @@ namespace TeamManagement.Domain.Repository
 {
     public interface ITeamRepository
     {
-       Task <List<TeamMember>> GetAllTeamMembers(int teamId);
-        Task AddMember(int teamId, int memId);
-        Task RemoveMember(int teamId, int memId);
+        List<TeamMember> GetAllTeamMembers(int teamId);
+        List<Team> GetAll();
+        void AddMember(int teamId, int memId);
+         void RemoveMember(int teamId, int memId);
 
     }
 }
